@@ -1,0 +1,49 @@
+.wrapper{
+  padding: 50px 20px;
+  display: flex;
+  align-items:flex-end;
+}
+
+.link{
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #ccc;
+  border-radius: 5px;
+  color: black;
+}
+
+.link:not(:last-child){
+  margin-right: 20px;
+}
+
+.link.active{
+  background-color: aliceblue;
+  border-bottom: 1px solid aliceblue;
+
+}
+
+.linkList{
+  display: flex;
+  padding-bottom: 60px;
+}
+
+
+.linkItem:not(:last-child){
+  margin-right: 30px;
+}
+
+.inner{
+   /* height: 455px; */
+ width: 150%;
+  margin-right: 50px;
+}
+
+.poster{
+  display: block;
+  /* width: 100%; */
+  /* height: auto; */
+  height: 455px;
+  width: 336px;
+  object-fit: contain;
+}

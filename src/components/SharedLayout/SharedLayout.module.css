@@ -1,0 +1,18 @@
+.link{
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #ccc;
+  border-radius: 5px;
+  color: black;
+}
+
+.link:not(:last-child){
+  margin-right: 20px;
+}
+
+.link.active{
+  background-color: aliceblue;
+  border-bottom: 1px solid aliceblue;
+
+}
