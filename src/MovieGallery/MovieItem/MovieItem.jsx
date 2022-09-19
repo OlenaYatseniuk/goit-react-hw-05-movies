@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function ImageGalleryItem({ link, title, poster_path }) {
   return (
     <li className={s.gallery__item}>
-      <Link className={s.link} to={`movies/${link}`}>
+      <Link className={s.link} to={`/movies/${link}`}>
         <div className={s.gallery__itemWrapper}>
           <img
             className={s.gallery__image}
