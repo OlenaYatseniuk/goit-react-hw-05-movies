@@ -34,6 +34,7 @@ function MoviesPage(props) {
     .catch(console.error)
     }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query])
 
   return (
