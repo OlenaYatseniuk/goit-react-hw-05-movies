@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import SharedLayout from './SharedLayout';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,7 +21,7 @@ export const App = () => {
             <Route path='cast' element={<CastPage/>}/>
             <Route path='reviews' element={<ReviewsPage/>}/>
           </Route>
-          <Route path="*" element={<div>Not fond</div>} />
+          <Route path="*" element={<Navigate to='/'/>} />
         </Route>
       </Routes>
       <ToastContainer autoClose={2000}/>
