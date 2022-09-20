@@ -25,7 +25,6 @@ function MovieDetails(props) {
   useEffect(() => {
     getFilmsByID(movieId).then(resp => {
       setFilm(resp);
-      console.log(resp);
     });
   }, [movieId]);
 
@@ -52,7 +51,7 @@ function MovieDetails(props) {
           </div>
           <div>
             <h1 className={s.title}>
-              {title} ({release_date.slice(0, 4)})
+              {title} ({release_date.slice(0, 4) || 'No info'})
             </h1>
             <p className={s.text}>
               <span className={s.info}>User Score:</span>{' '}
@@ -60,11 +59,11 @@ function MovieDetails(props) {
             </p>
             <p className={s.text}>
               <span className={s.info}> Overview: </span>
-              {overview}
+              {overview || 'No info'}
             </p>
             <p className={s.text}>
               <span className={s.info}>Genres: </span>
-              {getGenresName(genres)}
+              {getGenresName(genres) || 'No info'}
             </p>
           </div>
         </div>

@@ -4,7 +4,6 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'a4a0d478f5a66be1befa7af60710d15f';
 export const POSTER_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-
 export const getTrendingFilms = async () => {
   try {
     const { data } = await axios.get(
@@ -59,18 +58,22 @@ export const getGenresName = genres => {
 
 export const getCastOfFilm = async filmId => {
   try {
-    const { data } = await axios.get(`${BASE_URL}movie/${filmId}/credits?api_key=${API_KEY}`);
+    const { data } = await axios.get(
+      `${BASE_URL}movie/${filmId}/credits?api_key=${API_KEY}`
+    );
     return data;
   } catch (error) {
     console.error('Something went wrong' + error);
   }
 };
 
-export const getReviewsOfFilm = async (filmId)=>{
+export const getReviewsOfFilm = async filmId => {
   try {
-    const { data } = await axios.get(`${BASE_URL}movie/${filmId}/reviews?api_key=${API_KEY}`);
+    const { data } = await axios.get(
+      `${BASE_URL}movie/${filmId}/reviews?api_key=${API_KEY}`
+    );
     return data;
   } catch (error) {
     console.error('Something went wrong' + error);
   }
-}
+};

@@ -16,8 +16,7 @@ function ReviewsPage() {
 
   if (!reviews.length) {
     return (
-      <div className={s.notFount}>
-        {' '}
+      <div className={s.notFound}>
         Sorry, we haven't any reviews about this films yet.
       </div>
     );

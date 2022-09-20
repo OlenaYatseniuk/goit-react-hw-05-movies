@@ -7,6 +7,7 @@ import Section from '../../components/Section';
 import Searchbar from 'components/Searchbar';
 import { getFilmsByName } from '../../services/api';
 import MovieGallery from 'MovieGallery';
+import s from './MoviesPage.module.css';
 
 import { toast } from 'react-toastify';
 
@@ -28,7 +29,7 @@ function MoviesPage(props) {
           }
           setfilms(resp.results);
         })
-        .catch((error)=>toast.error(`${error.message}`));
+        .catch(error => toast.error(`${error.message}`));
     }
   }, [query, setSearchParams]);
 
@@ -40,7 +41,7 @@ function MoviesPage(props) {
           {films.length ? (
             <MovieGallery items={films} />
           ) : (
-            <div>There are no films </div>
+            <div className={s.notFound}>There are no films </div>
           )}
         </Container>
       </Section>
