@@ -1,10 +1,14 @@
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SharedLayout from './SharedLayout';
-import HomePage from '../pages/HomePage';
-import MoviesPage from '../pages/MoviesPage';
-import MovieDetails from 'pages/MovieDetails/MovieDetails';
-import CastPage from 'pages/MovieDetails/CastPage';
-import ReviewsPage from 'pages/MovieDetails/ReviewsPage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const HomePage = lazy(()=> import('../pages/HomePage'));
+const MoviesPage = lazy(()=> import('../pages/MoviesPage'));
+const MovieDetails = lazy(()=> import('../pages/MovieDetails/MovieDetails'));
+const CastPage = lazy(()=> import('../pages/MovieDetails/CastPage/'));
+const ReviewsPage = lazy(()=> import('../pages/MovieDetails/ReviewsPage'));
 
 export const App = () => {
   return (
@@ -20,6 +24,7 @@ export const App = () => {
           <Route path="*" element={<div>Not fond</div>} />
         </Route>
       </Routes>
+      <ToastContainer autoClose={2000}/>
     </>
   );
 };

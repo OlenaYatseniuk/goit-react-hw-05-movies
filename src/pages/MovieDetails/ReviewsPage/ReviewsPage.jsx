@@ -24,7 +24,7 @@ function ReviewsPage() {
   }
 
   return (
-    <ul>
+    <ul className={s.list}>
       {reviews.map(({ author, content, created_at, id }) => (
         <li key={id}>
           <div className={s.parent}>

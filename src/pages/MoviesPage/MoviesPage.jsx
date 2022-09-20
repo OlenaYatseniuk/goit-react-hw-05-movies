@@ -1,56 +1,51 @@
 import React from 'react';
-// import PropTypes from 'prop-types'
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import Container from 'components/Container';
 import Section from '../../components/Section';
 import Searchbar from 'components/Searchbar';
-import {getFilmsByName} from '../../services/api';
-import { useState } from 'react';
+import { getFilmsByName } from '../../services/api';
 import MovieGallery from 'MovieGallery';
-import { useSearchParams } from 'react-router-dom';
-import { useEffect } from 'react';
+
+import { toast } from 'react-toastify';
 
 function MoviesPage(props) {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
   const [films, setfilms] = useState([]);
-  const [query, setQuery] = useState(searchParams.get('query') ?? '');
+  const query = searchParams.get('query') ?? '';
 
-  const handleSubmit = (query) =>{
-    console.log(query)
-    setQuery(query);
-    setSearchParams(query !== '' ? { query } : {});
-  }
-
-  useEffect(()=>{
-    if(query){
+  useEffect(() => {
+    if (query) {
       getFilmsByName(query)
-    .then(resp => {
-      if(!resp.results.length){
-        console.log(resp);
-        setSearchParams('')
-        // return <div> Sorry, the are no films by your search</div>
-      }
-      setfilms(resp.results)
-    })
-    .catch(console.error)
+        .then(resp => {
+          if (resp.results.length === 0) {
+            console.log(resp);
+            setSearchParams({});
+            toast.error(
+              'Sorry, the are no films by your search. Please try to search another movie'
+            );
+          }
+          setfilms(resp.results);
+        })
+        .catch((error)=>toast.error(`${error.message}`));
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query])
+  }, [query, setSearchParams]);
 
   return (
     <main>
       <Section>
         <Container>
-          <Searchbar onSubmit={handleSubmit}/>
-          <MovieGallery items={films}/>
+          <Searchbar />
+          {films.length ? (
+            <MovieGallery items={films} />
+          ) : (
+            <div>There are no films </div>
+          )}
         </Container>
       </Section>
     </main>
   );
 }
-
-// Movies.propTypes = {
-
-// }
 
 export default MoviesPage;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { getCastOfFilm, POSTER_IMG_URL } from '../../../services/api';
 import s from './CastPage.module.css';
 
@@ -27,8 +27,8 @@ function CastPage() {
         <li key={id} className={s.item}>
           <div>
             <img className={s.photo} src={`${POSTER_IMG_URL}/${profile_path}`} alt={name} />
-            <h2>{name || 'No info'}</h2>
-            <p>Character: {character || 'No info'}</p>
+            <h2 className={s.name}>{name || 'No info'}</h2>
+            <p><span className={s.character}>Character:</span> {character || 'No info'}</p>
           </div>
         </li>
       ))}

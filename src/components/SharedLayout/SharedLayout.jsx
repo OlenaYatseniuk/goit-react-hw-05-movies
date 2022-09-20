@@ -8,6 +8,7 @@ function SharedLayout(props) {
   const getActiveClassName = ({isActive}) =>{
     return isActive ? `${s.link} ${s.active}` : s.link;
   }
+  
   return (
     <>
       <Header>

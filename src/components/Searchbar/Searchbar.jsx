@@ -1,12 +1,11 @@
-import { useEffect } from 'react';
 import { useState } from 'react';
-// import PropTypes from 'prop-types';
 import { FaSistrix } from 'react-icons/fa';
-// import {getFilmsByName} from '../../services/api';
+import { useSearchParams } from 'react-router-dom';
 import s from './Searchbar.module.css';
 
-function Searchbar({onSubmit}) {
-  const [query, setQuery] = useState('');
+function Searchbar() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get('query') ?? '');
 
   const handleChangeInput = event => {
     const { value } = event.target;
@@ -15,17 +14,10 @@ function Searchbar({onSubmit}) {
 
   const handleSubmitForm = event => {
     event.preventDefault();
-    if(query.trim()){
-
-      onSubmit(query);
-      setQuery('');
+    if (query.trim()) {
+      setSearchParams({ query });
     }
-
   };
-  useEffect(()=>{
-
-
-  },[query])
 
   return (
     <header className={s.searchbar}>
@@ -53,9 +45,5 @@ function Searchbar({onSubmit}) {
     </header>
   );
 }
-
-// Searchbar.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
 
 export default Searchbar;
